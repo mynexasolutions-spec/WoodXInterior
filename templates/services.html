@@ -1,0 +1,380 @@
+{% extends 'base.html' %}
+
+{% block title %}Our Woodworking & Interior Services | WoodX Interior Saharanpur{% endblock %}
+{% block meta_description %}Explore WoodX Interior's services: hand-carved beds, sofas, armchairs, and dining tables — all handcrafted from solid Teak and Sheesham wood in our Saharanpur workshop.{% endblock %}
+{% block meta_keywords %}WoodX Interior services, hand carved beds Saharanpur, custom sofas Saharanpur, dining tables Saharanpur, solid wood furniture services{% endblock %}
+{% block og_title %}Our Services | WoodX Interior Saharanpur{% endblock %}
+{% block og_description %}Hand-carved beds, sofas, chairs, and tables — handcrafted from solid Teak and Sheesham in our Saharanpur workshop.{% endblock %}
+
+{% block extra_css %}
+    <link rel="preload" as="image" href="{{ url_for('static', filename='img/portfolio/woodx-074.jpg') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/services.css') }}">
+{% endblock %}
+
+{% block content %}
+    <!-- SERVICES HERO BANNER -->
+    <section class="services-banner" id="services-top">
+        <img src="{{ url_for('static', filename='img/portfolio/woodx-074.jpg') }}" alt="WoodX Interior Master Workshop Saharanpur" class="services-banner-img" fetchpriority="high">
+        <div class="services-banner-overlay"></div>
+        <div class="services-banner-content reveal">
+            <div class="services-breadcrumbs">
+                <a href="{{ url_for('home') }}">Home</a>
+                <i class="fa-solid fa-chevron-right" style="font-size: 0.65rem;"></i>
+                <span>Our Services</span>
+            </div>
+            <h1>Solid Wood Furniture &amp;<br><em>Custom Woodwork</em></h1>
+            <p>From custom solid wood furniture and modern modular kitchens to wall paneling and carved doors — explore our services below.</p>
+            <div class="services-banner-actions">
+                <a href="#services-grid" class="btn-primary">Browse All Services</a>
+                <a href="#quick-estimate" class="btn-secondary">Request Fast Estimate</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUST STRIP -->
+    <div class="trust-strip">
+        <div class="trust-strip-inner">
+            <div class="trust-item">
+                <i class="fa-solid fa-tree"></i>
+                <div>
+                    <strong>100% Seasoned Wood</strong>
+                    <span>Teak, Sheesham, Oak &amp; Walnut</span>
+                </div>
+            </div>
+            <div class="trust-item">
+                <i class="fa-solid fa-hammer"></i>
+                <div>
+                    <strong>Direct From Workshop</strong>
+                    <span>Crafted in Saharanpur · No Middlemen</span>
+                </div>
+            </div>
+            <div class="trust-item">
+                <i class="fa-solid fa-shield-halved"></i>
+                <div>
+                    <strong>10-Year Warranty</strong>
+                    <span>Termite &amp; Moisture Protected</span>
+                </div>
+            </div>
+            <div class="trust-item">
+                <i class="fa-solid fa-hand-holding-dollar"></i>
+                <div>
+                    <strong>Direct Workshop Pricing</strong>
+                    <span>Honest factory rates with no showroom markups</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SERVICES CARDS GRID SECTION -->
+    <section class="services-grid-section" id="services-grid">
+        <div class="services-grid-header reveal">
+            <p class="eyebrow">What We Do</p>
+            <h2 class="section-title">Explore Our <em>Services</em></h2>
+            <p class="section-desc">Click any service to view photos, wood options, and specifications crafted by our Saharanpur woodworkers.</p>
+        </div>
+
+        <div class="services-cards-grid">
+            {% for s in services %}
+            <article class="service-card-item reveal" id="card-{{ s.slug }}">
+                <div class="service-card-media">
+                    <img src="{{ url_for('static', filename=s.hero_img) }}" alt="{{ s.name }}" loading="lazy" decoding="async">
+                    <span class="service-card-badge">
+                        <i class="fa-solid {{ s.icon }}"></i>
+                        <span>{{ s.badge }}</span>
+                    </span>
+                </div>
+
+                <div class="service-card-body">
+                    <span class="service-card-category">{{ s.category }}</span>
+                    <h3 class="service-card-title">{{ s.name }}</h3>
+                    <p class="service-card-desc">{{ s.short_desc }}</p>
+
+                    <ul class="service-card-highlights">
+                        {% for hl in s.highlights[:3] %}
+                        <li>
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span>{{ hl }}</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+
+                    <div class="service-card-actions">
+                        <a href="{{ url_for('service_detail', slug=s.slug) }}" class="btn-card-explore">
+                            <span>View Details &amp; Photos</span>
+                        </a>
+                        <button onclick="enquireService('{{ s.name }}')" class="btn-card-wa" aria-label="Enquire about {{ s.short_name }} on WhatsApp" title="WhatsApp Enquiry">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </button>
+                    </div>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- TIMBER & MATERIALS GUIDE -->
+    <section class="timber-guide-section" id="timber-guide">
+        <div class="reveal">
+            <p class="eyebrow">Quality Materials</p>
+            <h2 class="section-title">The Wood <em>We Use</em></h2>
+            <p class="section-desc">Great furniture starts with great wood. We only use properly dried and seasoned hardwoods that resist termites, moisture, and bending.</p>
+        </div>
+
+        <div class="timber-grid">
+            <div class="timber-card reveal">
+                <div class="timber-icon"><i class="fa-solid fa-crown"></i></div>
+                <h3>Sagwan (Teak Wood)</h3>
+                <span class="timber-origin">Best for Furniture · High Durability</span>
+                <p>Naturally water and termite resistant with rich natural oils. Strong, long-lasting, and ideal for dining tables, beds, and main entrance doors.</p>
+                <ul class="timber-traits">
+                    <li><i class="fa-solid fa-check"></i> Lasts 50+ Years</li>
+                    <li><i class="fa-solid fa-check"></i> No Bending or Cracking</li>
+                    <li><i class="fa-solid fa-check"></i> Beautiful Golden Brown Color</li>
+                </ul>
+            </div>
+
+            <div class="timber-card reveal">
+                <div class="timber-icon"><i class="fa-solid fa-gem"></i></div>
+                <h3>Sheesham (Indian Rosewood)</h3>
+                <span class="timber-origin">Traditional Saharanpur Hardwood</span>
+                <p>Heavy, dense, and durable with dark chocolate streaks. Takes polish very well and is famous for solid wood furniture and dining sets.</p>
+                <ul class="timber-traits">
+                    <li><i class="fa-solid fa-check"></i> Very Heavy and Sturdy</li>
+                    <li><i class="fa-solid fa-check"></i> Rich Natural Grain Patterns</li>
+                    <li><i class="fa-solid fa-check"></i> Great for Dining &amp; Beds</li>
+                </ul>
+            </div>
+
+            <div class="timber-card reveal">
+                <div class="timber-icon"><i class="fa-solid fa-leaf"></i></div>
+                <h3>White Oak &amp; Walnut</h3>
+                <span class="timber-origin">Modern Imported Hardwoods</span>
+                <p>Clean, straight-grain woods with contemporary shades. Perfect for modern villas, minimalist wall paneling, and designer office furniture.</p>
+                <ul class="timber-traits">
+                    <li><i class="fa-solid fa-check"></i> Modern, Elegant Look</li>
+                    <li><i class="fa-solid fa-check"></i> Strong and Scratch Resistant</li>
+                    <li><i class="fa-solid fa-check"></i> Beautiful Natural Matt Finish</li>
+                </ul>
+            </div>
+
+            <div class="timber-card reveal">
+                <div class="timber-icon"><i class="fa-solid fa-water"></i></div>
+                <h3>HDHMR &amp; Waterproof Plywood</h3>
+                <span class="timber-origin">Waterproof &amp; Termite Resistant</span>
+                <p>Specially used for modular kitchens, bathroom vanities, and wardrobes where water protection is essential.</p>
+                <ul class="timber-traits">
+                    <li><i class="fa-solid fa-check"></i> 100% Waterproof (BWP 710)</li>
+                    <li><i class="fa-solid fa-check"></i> Strong Screw Holding</li>
+                    <li><i class="fa-solid fa-check"></i> Termite &amp; Fungus Proof</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- OUR 4-STEP SERVICE PROCESS -->
+    <section class="service-process-section" id="process">
+        <div class="reveal">
+            <p class="eyebrow">How We Work</p>
+            <h2 class="section-title">From Design <em>To Delivery</em></h2>
+            <p class="section-desc">Our simple 4-step process makes ordering custom furniture easy, clear, and worry-free.</p>
+        </div>
+
+        <div class="service-workflow-steps">
+            <div class="service-workflow-card reveal">
+                <div class="workflow-num">01</div>
+                <h3 class="workflow-title">Consultation &amp; Measurement</h3>
+                <p class="workflow-desc">Share your room measurements or photos. We discuss your design ideas, wood choice, and budget.</p>
+            </div>
+            <div class="service-workflow-card reveal">
+                <div class="workflow-num">02</div>
+                <h3 class="workflow-title">Custom Plan &amp; Quote</h3>
+                <p class="workflow-desc">We finalize measurements, select wood and polish options, and give you a fixed price quote before work begins.</p>
+            </div>
+            <div class="service-workflow-card reveal">
+                <div class="workflow-num">03</div>
+                <h3 class="workflow-title">Crafting in Workshop</h3>
+                <p class="workflow-desc">Our skilled carpenters build your furniture in our Saharanpur workshop with regular photo updates.</p>
+            </div>
+            <div class="service-workflow-card reveal">
+                <div class="workflow-num">04</div>
+                <h3 class="workflow-title">Delivery &amp; Installation</h3>
+                <p class="workflow-desc">We deliver safely with protective packing and assemble everything carefully in your home.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE QUICK INQUIRY / ESTIMATE SECTION -->
+    <section class="quick-estimate-section" id="quick-estimate">
+        <div class="quick-estimate-inner reveal">
+            <div class="quick-estimate-header">
+                <p class="eyebrow" style="color: var(--amber-light);">Fast &amp; Free Quotation</p>
+                <h2>Request a <em>Free Quote</em></h2>
+                <p>Tell us what you need, and our team will prepare a price breakdown and consultation on WhatsApp within 15 minutes.</p>
+            </div>
+
+            <form id="serviceEstimateForm" onsubmit="handleEstimateSubmit(event)">
+                <div class="estimate-form-grid">
+                    <div class="estimate-form-group">
+                        <label for="estName">Your Full Name *</label>
+                        <input type="text" id="estName" placeholder="e.g. Rahul Sharma" required>
+                    </div>
+                    <div class="estimate-form-group">
+                        <label for="estPhone">Phone / WhatsApp Number *</label>
+                        <input type="tel" id="estPhone" placeholder="+91 98765 43210" required>
+                    </div>
+                    <div class="estimate-form-group">
+                        <label for="estService">Primary Service Needed *</label>
+                        <select id="estService" required>
+                            <option value="" disabled selected>Select a Service</option>
+                            {% for s in services %}
+                            <option value="{{ s.name }}">{{ s.name }}</option>
+                            {% endfor %}
+                            <option value="Complete Home Woodwork">Complete Turnkey Home Woodwork</option>
+                        </select>
+                    </div>
+                    <div class="estimate-form-group">
+                        <label for="estLocation">City / Location *</label>
+                        <input type="text" id="estLocation" placeholder="e.g. Saharanpur, Dehradun, Delhi NCR..." required>
+                    </div>
+                    <div class="estimate-form-group full">
+                        <label for="estDetails">Project Scope &amp; Timber Preferences</label>
+                        <textarea id="estDetails" placeholder="Briefly describe your requirements (e.g. 6-seater dining table in Sagwan, 10x12 modular kitchen with Blum hardware, timeline...)"></textarea>
+                    </div>
+                </div>
+                <button type="submit" class="btn-send-estimate">
+                    <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i>
+                    <span>Send Inquiry to Workshop on WhatsApp</span>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- SERVICES FAQ ACCORDION -->
+    <section class="services-faq-section" id="faq">
+        <div class="faq-header reveal">
+            <p class="eyebrow">Got Questions?</p>
+            <h2 class="section-title">Frequently Asked <em>Questions</em></h2>
+            <p class="section-desc">Answers to common questions about materials, timelines, delivery, and warranty.</p>
+        </div>
+
+        <div class="faq-list">
+            <div class="faq-card reveal">
+                <button class="faq-q-btn" type="button">
+                    <span>How long does a custom project take?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-a-body">
+                    <p>Timelines depend on the project size. A single dining table or bed usually takes 2 to 3 weeks. A complete modular kitchen or wardrobe set takes 3 to 4 weeks. We always give you a confirmed delivery date before starting.</p>
+                </div>
+            </div>
+
+            <div class="faq-card reveal">
+                <button class="faq-q-btn" type="button">
+                    <span>Do you deliver outside Saharanpur?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-a-body">
+                    <p>Yes, absolutely! While our main workshop is in Saharanpur, we deliver and install furniture across Dehradun, Haridwar, Meerut, Delhi NCR, Chandigarh, and all across India with safe protective packing.</p>
+                </div>
+            </div>
+
+            <div class="faq-card reveal">
+                <button class="faq-q-btn" type="button">
+                    <span>Why is solid wood furniture better than factory flat-pack furniture?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-a-body">
+                    <p>Most factory furniture uses particle board or cheap MDF that absorbs moisture and breaks within a few years. We use 100% solid seasoned hardwood (Teak, Sheesham) and waterproof marine ply that lasts for decades.</p>
+                </div>
+            </div>
+
+            <div class="faq-card reveal">
+                <button class="faq-q-btn" type="button">
+                    <span>Can I choose my own wood, size, and polish shade?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-a-body">
+                    <p>Yes, everything is made to order. You can choose the exact size, wood type (Teak, Sheesham, Oak, Walnut), hardware brands (Blum, Hafele, Hettich), and finish (glossy, matt, or natural polish).</p>
+                </div>
+            </div>
+
+            <div class="faq-card reveal">
+                <button class="faq-q-btn" type="button">
+                    <span>How do you protect wood from termites and moisture?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-a-body">
+                    <p>All our wood is treated against termites and borer insects. We also dry the wood properly before crafting to prevent cracks, warping, and bending in any season.</p>
+                </div>
+            </div>
+
+            <div class="faq-card reveal">
+                <button class="faq-q-btn" type="button">
+                    <span>What warranty do you provide?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-a-body">
+                    <p>We provide a 10-year written warranty on all wooden joints and structure. Hardware like hinges and drawer channels come with manufacturer warranties.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOTTOM CTA BANNER -->
+    <section class="services-cta-strip">
+        <div class="services-cta-inner reveal">
+            <p class="eyebrow" style="color: var(--amber-light);">Start Your Project</p>
+            <h2>Ready to Start<br><em>Your Project?</em></h2>
+            <p>Call our workshop or message us on WhatsApp to discuss your requirements and get a free quote.</p>
+            <div class="services-cta-actions">
+                <a href="tel:+919759047747" class="btn-primary"><i class="fa-solid fa-phone"></i> Call +91 97590 47747</a>
+                <a href="https://wa.me/919759047747?text=Hi%20WoodX%20Interior%2C%20I%20would%20like%20to%20discuss%20a%20woodworking%20project." target="_blank" rel="noopener" class="btn-service-wa" style="font-size: 0.95rem; padding: 1.1rem 2.2rem;"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // FAQ ACCORDION LOGIC
+    document.querySelectorAll('.faq-q-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            const card = button.parentElement;
+            const isOpen = card.classList.contains('open');
+            document.querySelectorAll('.faq-card').forEach(c => c.classList.remove('open'));
+            if (!isOpen) {
+                card.classList.add('open');
+            }
+        });
+    });
+
+    // ESTIMATE FORM HANDLER
+    function handleEstimateSubmit(event) {
+        event.preventDefault();
+        const name = document.getElementById('estName').value.trim();
+        const phone = document.getElementById('estPhone').value.trim();
+        const service = document.getElementById('estService').value;
+        const location = document.getElementById('estLocation').value.trim();
+        const details = document.getElementById('estDetails').value.trim();
+
+        if (!name || !phone || !service || !location) {
+            alert('Please fill out all required fields.');
+            return;
+        }
+
+        let message = `*WoodX Interior - New Service Estimate Inquiry*%0A%0A`;
+        message += `*Name:* ${encodeURIComponent(name)}%0A`;
+        message += `*Phone:* ${encodeURIComponent(phone)}%0A`;
+        message += `*Service:* ${encodeURIComponent(service)}%0A`;
+        message += `*Location:* ${encodeURIComponent(location)}%0A`;
+        if (details) {
+            message += `*Details / Scope:* ${encodeURIComponent(details)}%0A`;
+        }
+
+        const whatsappNumber = "919759047747";
+        const url = `https://wa.me/${whatsappNumber}?text=${message}`;
+        window.open(url, '_blank').focus();
+    }
+</script>
+{% endblock %}

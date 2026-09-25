@@ -1,0 +1,98 @@
+<nav id="navbar">
+    <a href="{{ url_for('home') }}" class="nav-logo">
+        <img src="{{ url_for('static', filename='img/woodx-interior-logo.png') }}" alt="WoodX Interior Logo" fetchpriority="high">
+    </a>
+    <ul class="nav-links">
+        <li><a href="{{ url_for('home') }}" class="{{ 'active' if request.endpoint == 'home' else '' }}">Home</a></li>
+        <li><a href="{{ url_for('about') }}" class="{{ 'active' if request.endpoint == 'about' else '' }}">About</a></li>
+
+        <!-- SERVICES DROPDOWN -->
+        <li class="nav-item-dropdown">
+            <a href="{{ url_for('services') }}" class="nav-dropdown-trigger {{ 'active' if request.endpoint in ['services', 'service_detail'] else '' }}">
+                <span>Services</span>
+                <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+            </a>
+            
+            <div class="dropdown-menu">
+                <div class="dropdown-header-bar">
+                    <a href="{{ url_for('services') }}" class="dropdown-all-link">
+                        <i class="fa-solid fa-table-cells-large"></i>
+                        <span>View All Services</span>
+                    </a>
+                </div>
+                <div class="dropdown-grid">
+                    <a href="{{ url_for('service_detail', slug='hand-carved-beds') }}" class="dropdown-item">
+                        <div class="dropdown-item-icon"><i class="fa-solid fa-bed"></i></div>
+                        <div class="dropdown-item-info">
+                            <span class="dropdown-item-title">Beds &amp; Bedroom Furniture</span>
+                            <span class="dropdown-item-sub">Hand-Carved Headboards</span>
+                        </div>
+                    </a>
+                    <a href="{{ url_for('service_detail', slug='sofas-living-room') }}" class="dropdown-item">
+                        <div class="dropdown-item-icon"><i class="fa-solid fa-couch"></i></div>
+                        <div class="dropdown-item-info">
+                            <span class="dropdown-item-title">Sofas &amp; Living Room</span>
+                            <span class="dropdown-item-sub">Carved Sofa Sets</span>
+                        </div>
+                    </a>
+                    <a href="{{ url_for('service_detail', slug='chairs-armchairs') }}" class="dropdown-item">
+                        <div class="dropdown-item-icon"><i class="fa-solid fa-chair"></i></div>
+                        <div class="dropdown-item-info">
+                            <span class="dropdown-item-title">Chairs &amp; Armchairs</span>
+                            <span class="dropdown-item-sub">Wingback &amp; Accent Chairs</span>
+                        </div>
+                    </a>
+                    <a href="{{ url_for('service_detail', slug='tables-consoles') }}" class="dropdown-item">
+                        <div class="dropdown-item-icon"><i class="fa-solid fa-table"></i></div>
+                        <div class="dropdown-item-info">
+                            <span class="dropdown-item-title">Tables &amp; Consoles</span>
+                            <span class="dropdown-item-sub">Dining &amp; Center Tables</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </li>
+
+        <li><a href="{{ url_for('gallery') }}" class="{{ 'active' if request.endpoint == 'gallery' else '' }}">Gallery</a></li>
+        <li><a href="{{ url_for('contact') }}" class="{{ 'active' if request.endpoint == 'contact' else '' }}">Contact</a></li>
+        <li><a href="tel:+919759047747" class="nav-cta"><i class="fa-solid fa-phone"></i> Call Now</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- MOBILE NAVIGATION MENU -->
+<div class="mobile-menu" id="mobileMenu">
+    <a href="{{ url_for('home') }}" onclick="closeMobile()" class="{{ 'active' if request.endpoint == 'home' else '' }}">Home</a>
+    <a href="{{ url_for('about') }}" onclick="closeMobile()" class="{{ 'active' if request.endpoint == 'about' else '' }}">About</a>
+    
+    <!-- MOBILE SERVICES ACCORDION -->
+    <div class="mobile-dropdown-wrap">
+        <div class="mobile-dropdown-header">
+            <a href="{{ url_for('services') }}" onclick="closeMobile()" class="{{ 'active' if request.endpoint in ['services', 'service_detail'] else '' }}">Services</a>
+            <button type="button" class="mobile-dropdown-toggle" id="mobileServicesToggle" aria-label="Toggle Services List">
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+        </div>
+        <div class="mobile-submenu" id="mobileServicesMenu">
+            <a href="{{ url_for('services') }}" onclick="closeMobile()" class="mobile-sublink all-services-sublink">
+                <i class="fa-solid fa-table-cells-large"></i> View All Services
+            </a>
+            <a href="{{ url_for('service_detail', slug='hand-carved-beds') }}" onclick="closeMobile()" class="mobile-sublink">
+                <i class="fa-solid fa-bed"></i> Beds &amp; Bedroom Furniture
+            </a>
+            <a href="{{ url_for('service_detail', slug='sofas-living-room') }}" onclick="closeMobile()" class="mobile-sublink">
+                <i class="fa-solid fa-couch"></i> Sofas &amp; Living Room
+            </a>
+            <a href="{{ url_for('service_detail', slug='chairs-armchairs') }}" onclick="closeMobile()" class="mobile-sublink">
+                <i class="fa-solid fa-chair"></i> Chairs &amp; Armchairs
+            </a>
+            <a href="{{ url_for('service_detail', slug='tables-consoles') }}" onclick="closeMobile()" class="mobile-sublink">
+                <i class="fa-solid fa-table"></i> Tables &amp; Consoles
+            </a>
+        </div>
+    </div>
+
+    <a href="{{ url_for('gallery') }}" onclick="closeMobile()" class="{{ 'active' if request.endpoint == 'gallery' else '' }}">Gallery</a>
+    <a href="{{ url_for('contact') }}" onclick="closeMobile()" class="{{ 'active' if request.endpoint == 'contact' else '' }}">Contact</a>
+    <a href="tel:+919759047747" onclick="closeMobile()" class="mobile-cta"><i class="fa-solid fa-phone"></i> Call Now</a>
+</div>

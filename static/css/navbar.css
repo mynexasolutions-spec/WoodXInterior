@@ -1,0 +1,474 @@
+/* ==========================================================================
+   NAVBAR & NAVIGATION STYLING - WoodX Interior
+   ========================================================================== */
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 200;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5vw;
+    background: rgba(253, 250, 245, .97);
+    backdrop-filter: blur(14px);
+    transition: background .4s, box-shadow .4s;
+}
+
+nav.scrolled {
+    box-shadow: 0 2px 30px var(--shadow);
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    height: 78px;
+    text-decoration: none;
+    transition: transform 0.3s;
+}
+
+.nav-logo:hover {
+    transform: scale(1.02);
+}
+
+.nav-logo img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    margin-right: 12px;
+}
+
+.nav-logo span {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1.5rem;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--brown-dark);
+}
+
+.nav-logo span em {
+    font-style: italic;
+    color: var(--amber);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.2rem;
+    list-style: none;
+    align-items: center;
+    height: 100%;
+}
+
+.nav-links > li {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.nav-links a {
+    font-weight: 700;
+    font-size: .83rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    text-decoration: none;
+    transition: color .2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--amber) !important;
+}
+
+.nav-cta {
+    background: var(--amber);
+    color: var(--brown-dark) !important;
+    padding: .55rem 1.3rem;
+    border-radius: 2px;
+    transition: background .2s !important;
+    display: inline-flex;
+    align-items: center;
+}
+
+.nav-cta:hover {
+    background: var(--amber-light) !important;
+}
+
+.nav-cta i {
+    margin-right: 6px;
+    font-size: 0.9em;
+    opacity: 0.9;
+}
+
+/* --------------------------------------------------------------------------
+   DESKTOP SERVICES DROPDOWN
+   -------------------------------------------------------------------------- */
+.nav-item-dropdown {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.nav-dropdown-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    height: 100%;
+}
+
+.dropdown-arrow {
+    font-size: 0.72rem;
+    color: inherit;
+    transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.nav-item-dropdown:hover .dropdown-arrow {
+    transform: rotate(180deg);
+    color: var(--amber);
+}
+
+/* DROPDOWN MENU CARD */
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% - 6px);
+    left: 50%;
+    transform: translateX(-50%) translateY(12px);
+    width: 600px;
+    background: #FDFAF5;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: 0 18px 50px rgba(30, 15, 5, 0.2);
+    padding: 1.1rem;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.22s ease, transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.22s;
+    z-index: 250;
+}
+
+/* INVISIBLE BRIDGE PREVENTING HOVER DROP */
+.dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -14px;
+    left: 0;
+    right: 0;
+    height: 14px;
+}
+
+.nav-item-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* HEADER BAR IN DROPDOWN */
+.dropdown-header-bar {
+    background: var(--cream);
+    border-radius: 6px;
+    padding: 0.7rem 1rem;
+    margin-bottom: 0.8rem;
+    border: 1px solid var(--border);
+}
+
+.dropdown-all-link {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    text-decoration: none;
+    color: var(--brown-dark) !important;
+    font-weight: 800;
+    font-size: 0.84rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    transition: color 0.2s;
+}
+
+.dropdown-all-link i {
+    color: var(--amber);
+}
+
+.dropdown-all-link:hover {
+    color: var(--amber) !important;
+}
+
+/* 2-COLUMN GRID OF SERVICES */
+.dropdown-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.45rem;
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.65rem 0.85rem;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+}
+
+.dropdown-item:hover {
+    background: #fff;
+    border-color: var(--border);
+    transform: translateX(3px);
+    box-shadow: 0 4px 12px rgba(56, 34, 20, 0.05);
+}
+
+.dropdown-item-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 4px;
+    background: rgba(200, 131, 42, 0.12);
+    color: var(--amber);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+    transition: all 0.2s;
+}
+
+.dropdown-item:hover .dropdown-item-icon {
+    background: var(--amber);
+    color: var(--brown-dark);
+}
+
+.dropdown-item-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown-item-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.98rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--brown-dark);
+    line-height: 1.2;
+    transition: color 0.2s;
+}
+
+.dropdown-item:hover .dropdown-item-title {
+    color: var(--amber);
+}
+
+.dropdown-item-sub {
+    font-size: 0.74rem;
+    font-weight: 500;
+    color: var(--text-mid);
+    text-transform: none;
+    letter-spacing: normal;
+    margin-top: 1px;
+}
+
+/* --------------------------------------------------------------------------
+   HAMBURGER & MOBILE MENU
+   -------------------------------------------------------------------------- */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.hamburger span {
+    display: block;
+    width: 26px;
+    height: 2.5px;
+    background: var(--brown-dark);
+    border-radius: 2px;
+    transition: all .3s;
+}
+
+.hamburger.open span:nth-child(1) {
+    transform: translateY(7.5px) rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+    transform: translateY(-7.5px) rotate(-45deg);
+}
+
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    border-bottom: 2px solid var(--border);
+    padding: 1.6rem 5vw 2.2rem;
+    z-index: 199;
+    flex-direction: column;
+    gap: 1.2rem;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+}
+
+.mobile-menu.open {
+    display: flex;
+}
+
+.mobile-menu > a {
+    font-weight: 800;
+    font-size: 1.05rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.9rem;
+    transition: color 0.2s;
+}
+
+.mobile-menu > a.active {
+    color: var(--amber);
+}
+
+/* MOBILE DROPDOWN ACCORDION */
+.mobile-dropdown-wrap {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.8rem;
+}
+
+.mobile-dropdown-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mobile-dropdown-header a {
+    font-weight: 800;
+    font-size: 1.05rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.mobile-dropdown-header a.active {
+    color: var(--amber);
+}
+
+.mobile-dropdown-toggle {
+    background: rgba(200, 131, 42, 0.12);
+    border: 1px solid var(--border);
+    color: var(--brown-dark);
+    width: 38px;
+    height: 38px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.mobile-dropdown-toggle.open {
+    background: var(--amber);
+    transform: rotate(180deg);
+}
+
+.mobile-submenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.35s ease, margin 0.35s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    background: var(--cream);
+    border-radius: 6px;
+}
+
+.mobile-submenu.open {
+    max-height: 600px;
+    padding: 0.9rem 1.1rem;
+    margin-top: 0.8rem;
+    border: 1px solid var(--border);
+}
+
+.mobile-sublink {
+    font-size: 0.88rem !important;
+    font-weight: 700 !important;
+    color: var(--text-mid) !important;
+    border-bottom: none !important;
+    padding: 0.35rem 0 !important;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    transition: color 0.2s;
+}
+
+.mobile-sublink i {
+    width: 18px;
+    color: var(--amber);
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+.mobile-sublink:hover {
+    color: var(--amber) !important;
+}
+
+.mobile-sublink.all-services-sublink {
+    font-weight: 900 !important;
+    color: var(--brown-dark) !important;
+    padding-bottom: 0.6rem !important;
+    margin-bottom: 0.4rem;
+    border-bottom: 1px dashed var(--border) !important;
+}
+
+.mobile-sublink.all-services-sublink i {
+    color: var(--amber);
+}
+
+.mobile-menu a.mobile-cta {
+    background: var(--amber);
+    color: var(--brown-dark);
+    text-align: center;
+    border-radius: 2px;
+    padding: 1rem;
+    border-bottom: none;
+    margin-top: 1rem;
+    font-weight: 900;
+    box-shadow: 0 4px 15px rgba(200, 131, 42, 0.2);
+}
+
+.mobile-menu a.mobile-cta:active {
+    background: var(--amber-light);
+    transform: translateY(1px);
+}
+
+.mobile-menu a.mobile-cta i {
+    margin-right: 8px;
+}
+
+@media(max-width:960px) {
+    .nav-links {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+}

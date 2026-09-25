@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="description" content="{% block meta_description %}WoodX Interior (Wood Ex Interior & Co.) - Premium bespoke woodworking and custom furniture services in Saharanpur. Specializing in hand-carved beds, sofas, chairs, and dining tables.{% endblock %}">
+    <meta name="keywords" content="{% block meta_keywords %}custom furniture Saharanpur, best carpenter Saharanpur, bespoke woodworking India, hand carved beds Saharanpur, wood carving Saharanpur, WoodX Interior Saharanpur, professional carpentry services Saharanpur{% endblock %}">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{% block og_title %}WoodX Interior | Bespoke Woodworking & Custom Furniture in Saharanpur{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Master woodworkers crafting bespoke furniture, luxury cabinetry, and fine joinery in Saharanpur. Handcrafted quality, every piece built by hand.{% endblock %}">
+    <meta property="og:image" content="{% block og_image %}{{ url_for('static', filename='img/woodx-interior-logo.png', _external=True) }}{% endblock %}">
+    <meta property="og:url" content="{{ request.url_root.rstrip('/') }}{{ request.path }}">
+    <meta property="og:site_name" content="WoodX Interior">
+    <meta property="og:locale" content="en_IN">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{% block twitter_title %}{{ self.og_title() }}{% endblock %}">
+    <meta name="twitter:description" content="{% block twitter_description %}{{ self.og_description() }}{% endblock %}">
+    <meta name="twitter:image" content="{{ self.og_image() }}">
+
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Wood Ex Interior & Co.">
+    <link rel="canonical" href="{% block canonical_url %}{{ request.url_root.rstrip('/') }}{{ request.path }}{% endblock %}">
+
+    <!-- Schema.org LocalBusiness -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "WoodX Interior",
+      "alternateName": "Wood Ex Interior & Co.",
+      "image": "{{ url_for('static', filename='img/woodx-interior-logo.png', _external=True) }}",
+      "telephone": "+91-9759047747",
+      "email": "woodexinteriorindia@gmail.com",
+      "taxID": "09CFFPA4936R1ZW",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Near Azizia Masjid, Azeez Colony, Chilkana Bus Stand",
+        "addressLocality": "Saharanpur",
+        "addressRegion": "Uttar Pradesh",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 29.990142,
+        "longitude": 77.5378099
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "08:00",
+          "closes": "18:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "09:00",
+          "closes": "15:00"
+        }
+      ]
+    }
+    </script>
+
+    <title>{% block title %}WoodX Interior | Bespoke Woodworking & Custom Furniture Saharanpur{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&family=Barlow+Condensed:wght@700;800;900&family=Playfair+Display:ital,wght@0,900;1,900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='img/favicons/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='img/favicons/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='img/favicons/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='img/favicons/site.webmanifest') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicons/favicon.ico') }}">
+    
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    {% include 'components/navbar.html' %}
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    {% include 'components/footer.html' %}
+
+    <div class="floating-actions">
+        <a href="tel:+919759047747" class="float-btn float-phone" aria-label="Call Now" data-tooltip="Call WoodX Interior"><i class="fa-solid fa-phone"></i></a>
+        <a href="https://wa.me/919759047747" class="float-btn float-wa" aria-label="WhatsApp Us" data-tooltip="WhatsApp WoodX Interior"><i class="fa-brands fa-whatsapp"></i></a>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

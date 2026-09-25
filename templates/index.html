@@ -1,0 +1,562 @@
+{% extends 'base.html' %}
+
+{% block title %}WoodX Interior | Best Custom Furniture & Bespoke Woodworking Saharanpur{% endblock %}
+
+{% block extra_css %}
+    <link rel="preload" as="image" href="{{ url_for('static', filename='img/hero-1.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/hero.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+{% endblock %}
+
+{% block content %}
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="hero-slides">
+            <div class="slide"></div>
+            <div class="slide"></div>
+            <div class="slide"></div>
+            <div class="slide"></div>
+            <div class="slide"></div>
+            <div class="hero-slide-badge-top">
+                <i class="fa-solid fa-gem"></i>
+                <span>Handcrafted in Saharanpur</span>
+            </div>
+            <div class="hero-slide-badge">
+                <i class="fa-solid fa-certificate"></i>
+                <div>
+                    <strong>100% Solid Seasoned Wood</strong>
+                    <span>Master Crafted in Saharanpur</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge">Master Woodworkers Since 1998 · Saharanpur</div>
+            <h1>Solid Wood Furniture<br>Built For <em>Generations.</em></h1>
+            <p class="hero-desc">We make high-quality solid wood furniture, modern modular kitchens, and custom woodwork. Handcrafted with care, precision, and 25+ years of experience in Saharanpur.</p>
+            <div class="hero-actions">
+                <a href="{{ url_for('services') }}" class="btn-secondary"><i class="fa-solid fa-shapes"></i> Explore Services</a>
+                <a href="https://wa.me/919759047747?text=Hi%20WoodX%20Interior%2C%20I%20would%20like%20to%20discuss%20a%20woodworking%20project." target="_blank" rel="noopener" class="btn-service-wa"><i class="fa-brands fa-whatsapp"></i> WhatsApp Us</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-num">25<em>+</em></span>
+                    <span class="stat-label">Years Experience</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">1.4<em>k+</em></span>
+                    <span class="stat-label">Homes Furnished</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">10<em>Yr</em></span>
+                    <span class="stat-label">Written Warranty</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">4.9<em>★</em></span>
+                    <span class="stat-label">Happy Clients</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MARQUEE STRIP -->
+    <div class="marquee-strip" aria-hidden="true">
+        <div class="marquee-track">
+            <span class="marquee-item">Hand-Carved Beds</span>
+            <span class="marquee-item">Custom Teak Furniture</span>
+            <span class="marquee-item">Sofas &amp; Living Room</span>
+            <span class="marquee-item">Accent Chairs &amp; Armchairs</span>
+            <span class="marquee-item">Dining &amp; Console Tables</span>
+            <span class="marquee-item">Italian PU Polish</span>
+            <span class="marquee-item">Saharanpur Craftsmanship</span>
+            <span class="marquee-item">Hand-Carved Beds</span>
+            <span class="marquee-item">Custom Teak Furniture</span>
+            <span class="marquee-item">Sofas &amp; Living Room</span>
+            <span class="marquee-item">Accent Chairs &amp; Armchairs</span>
+            <span class="marquee-item">Dining &amp; Console Tables</span>
+            <span class="marquee-item">Italian PU Polish</span>
+            <span class="marquee-item">Saharanpur Craftsmanship</span>
+        </div>
+    </div>
+
+    <!-- ABOUT SECTION -->
+    <section class="about" id="about">
+        <div class="about-visual reveal-left">
+            <div class="about-img-main">
+                <img src="{{ url_for('static', filename='img/whoweAre.png') }}" alt="Master woodworker crafting bespoke furniture in Saharanpur workshop" loading="lazy" decoding="async">
+                <div class="about-badge-float">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <span>100% Seasoned Hardwood</span>
+                </div>
+                <div class="about-accent-box">
+                    <span class="big-num">25+</span>
+                    <span class="sub">Years of Quality Woodwork</span>
+                </div>
+            </div>
+        </div>
+        <div class="reveal-right">
+            <p class="eyebrow">Who We Are</p>
+            <h2 class="section-title">Carpenters Who<br><em>Love Woodwork</em></h2>
+            <p class="section-desc">Our skilled carpenters combine traditional woodworking with modern precision tools. Every joint is tight, every surface is smooth, and every piece is crafted with care for your home.</p>
+            <div class="about-features">
+                <div class="about-feat-item">
+                    <div class="about-feat-icon"><i class="fa-solid fa-ruler-combined"></i></div>
+                    <div>
+                        <strong>Custom Size &amp; Design</strong>
+                        <span>Made to fit your exact room size, wall space, and interior style.</span>
+                    </div>
+                </div>
+                <div class="about-feat-item">
+                    <div class="about-feat-icon"><i class="fa-solid fa-tree"></i></div>
+                    <div>
+                        <strong>100% Seasoned Hardwood</strong>
+                        <span>Top quality Teak, Sheesham, Oak, and Walnut dried properly to prevent cracks and bending.</span>
+                    </div>
+                </div>
+                <div class="about-feat-item">
+                    <div class="about-feat-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+                    <div>
+                        <strong>Direct Workshop Pricing</strong>
+                        <span>Factory-direct prices from our Saharanpur workshop with zero middleman markups.</span>
+                    </div>
+                </div>
+                <div class="about-feat-item">
+                    <div class="about-feat-icon"><i class="fa-solid fa-award"></i></div>
+                    <div>
+                        <strong>10-Year Warranty</strong>
+                        <span>Written 10-year warranty covering all wooden joints and structure.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="about-cta-row" style="display: flex; gap: 1rem; align-items: center; margin-top: 2.2rem; flex-wrap: wrap;">
+                <a href="#contact" class="btn-primary"><i class="fa-solid fa-hammer"></i> Work With Us</a>
+                <a href="{{ url_for('services') }}" class="btn-outline">Explore Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SHOWCASE -->
+    <section class="services" id="services">
+        <div class="services-header reveal">
+            <p class="eyebrow">What We Do</p>
+            <h2 class="section-title">Our Specialized <em>Services</em></h2>
+            <p class="section-desc">From hand-carved beds to sofas, chairs, and dining tables — crafted by skilled woodworkers in our Saharanpur workshop.</p>
+        </div>
+
+        <div class="services-grid">
+            <!-- 01: HAND-CARVED BEDS -->
+            <div class="svc-card reveal">
+                <div class="svc-img">
+                    <img src="{{ url_for('static', filename='img/services/hand-carved-beds/bed-01.jpg') }}" alt="Hand-carved solid wood beds made in Saharanpur" loading="lazy" decoding="async">
+                    <span class="svc-badge"><i class="fa-solid fa-bed"></i> Signature Craft</span>
+                </div>
+                <div class="svc-body">
+                    <span class="svc-kicker">Beds & Bedroom Furniture</span>
+                    <h3 class="svc-name">Hand-Carved Beds &amp; Bedroom Furniture</h3>
+                    <p class="svc-desc">Solid teak and sheesham king &amp; queen beds with hand-carved headboards, footboards, and matching bedside units.</p>
+                    <div class="svc-actions">
+                        <button onclick="enquireService('Hand-Carved Beds')" class="svc-action-enquire"><i class="fa-brands fa-whatsapp"></i> Enquire</button>
+                        <a href="{{ url_for('service_detail', slug='hand-carved-beds') }}" class="svc-action-detail"><span>Details</span></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 02: SOFAS & LIVING ROOM -->
+            <div class="svc-card reveal">
+                <div class="svc-img">
+                    <img src="{{ url_for('static', filename='img/services/sofas-living-room/sofa-01.jpg') }}" alt="Carved wood sofa sets and living room furniture" loading="lazy" decoding="async">
+                    <span class="svc-badge"><i class="fa-solid fa-couch"></i> Handcrafted Frames</span>
+                </div>
+                <div class="svc-body">
+                    <span class="svc-kicker">Sofas &amp; Living Room</span>
+                    <h3 class="svc-name">Sofas &amp; Living Room Furniture</h3>
+                    <p class="svc-desc">3-seater sofas, loveseats, and matching armchair sets with hand-carved wooden frames and premium upholstery.</p>
+                    <div class="svc-actions">
+                        <button onclick="enquireService('Sofas & Living Room Furniture')" class="svc-action-enquire"><i class="fa-brands fa-whatsapp"></i> Enquire</button>
+                        <a href="{{ url_for('service_detail', slug='sofas-living-room') }}" class="svc-action-detail"><span>Details</span></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 03: CHAIRS & ARMCHAIRS -->
+            <div class="svc-card reveal">
+                <div class="svc-img">
+                    <img src="{{ url_for('static', filename='img/services/chairs-armchairs/chair-01.jpg') }}" alt="Carved wooden armchairs and accent chairs" loading="lazy" decoding="async">
+                    <span class="svc-badge"><i class="fa-solid fa-chair"></i> Made to Match</span>
+                </div>
+                <div class="svc-body">
+                    <span class="svc-kicker">Chairs &amp; Armchairs</span>
+                    <h3 class="svc-name">Chairs &amp; Accent Armchairs</h3>
+                    <p class="svc-desc">Wingback chairs, carved gold-finish armchairs, and single accent seating built on solid wood frames.</p>
+                    <div class="svc-actions">
+                        <button onclick="enquireService('Chairs & Armchairs')" class="svc-action-enquire"><i class="fa-brands fa-whatsapp"></i> Enquire</button>
+                        <a href="{{ url_for('service_detail', slug='chairs-armchairs') }}" class="svc-action-detail"><span>Details</span></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 04: TABLES & CONSOLES -->
+            <div class="svc-card reveal">
+                <div class="svc-img">
+                    <img src="{{ url_for('static', filename='img/services/tables-consoles/table-01.jpg') }}" alt="Solid wood dining, console and center tables" loading="lazy" decoding="async">
+                    <span class="svc-badge"><i class="fa-solid fa-table"></i> Built to Order</span>
+                </div>
+                <div class="svc-body">
+                    <span class="svc-kicker">Tables &amp; Consoles</span>
+                    <h3 class="svc-name">Dining, Console &amp; Center Tables</h3>
+                    <p class="svc-desc">Carved dining sets, pedestal center tables, and entryway console tables in solid Teak and Sheesham.</p>
+                    <div class="svc-actions">
+                        <button onclick="enquireService('Dining & Console Tables')" class="svc-action-enquire"><i class="fa-brands fa-whatsapp"></i> Enquire</button>
+                        <a href="{{ url_for('service_detail', slug='tables-consoles') }}" class="svc-action-detail"><span>Details</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="services-cta-wrap reveal" style="text-align: center; margin-top: 3.5rem;">
+            <a href="{{ url_for('services') }}" class="btn-primary" style="display: inline-flex; align-items: center; gap: 0.75rem; padding: 1.1rem 2.5rem; font-size: 0.95rem;">
+                <span>Explore All Services &amp; Details</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- CINEMATIC PARALLAX BANNER -->
+    <div class="parallax-banner">
+        <div class="parallax-bg" id="parallaxBg"></div>
+        <div class="parallax-overlay"></div>
+        <div class="parallax-content reveal">
+            <h2>Quality Woodwork Made<br><em>For Your Home</em></h2>
+            <p>We don't just make furniture — we build solid wood pieces that last for decades and stay beautiful year after year.</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="#contact" class="btn-primary"><i class="fa-solid fa-hammer"></i> Start Your Project</a>
+                <a href="https://wa.me/919759047747" target="_blank" rel="noopener" class="btn-service-wa"><i class="fa-brands fa-whatsapp"></i> Quick WhatsApp Quote</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4-STEP CRAFTING JOURNEY -->
+    <section class="process" id="process">
+        <div class="reveal">
+            <p class="eyebrow" style="color:var(--amber-light)">How It Works</p>
+            <h2 class="section-title">Our Simple <em>4-Step Process</em></h2>
+            <p class="section-desc">We make ordering custom furniture easy, clear, and worry-free from start to finish.</p>
+        </div>
+        <div class="process-steps">
+            <div class="process-step reveal">
+                <div class="step-num">01</div>
+                <h3 class="step-title"><i class="fa-solid fa-comments" style="color:var(--amber);margin-right:6px;font-size:0.95rem;"></i> Consultation</h3>
+                <p class="step-desc">We discuss your ideas, room measurements, wood preferences, and budget in person or on WhatsApp.</p>
+            </div>
+            <div class="process-step reveal">
+                <div class="step-num">02</div>
+                <h3 class="step-title"><i class="fa-solid fa-drafting-compass" style="color:var(--amber);margin-right:6px;font-size:0.95rem;"></i> Custom Plan &amp; Quote</h3>
+                <p class="step-desc">We finalize dimensions, wood choice, and polish, giving you a fixed price quote before work begins.</p>
+            </div>
+            <div class="process-step reveal">
+                <div class="step-num">03</div>
+                <h3 class="step-title"><i class="fa-solid fa-hammer" style="color:var(--amber);margin-right:6px;font-size:0.95rem;"></i> Crafting in Workshop</h3>
+                <p class="step-desc">Our carpenters build your furniture in our Saharanpur workshop, sending you regular photo updates.</p>
+            </div>
+            <div class="process-step reveal">
+                <div class="step-num">04</div>
+                <h3 class="step-title"><i class="fa-solid fa-truck-fast" style="color:var(--amber);margin-right:6px;font-size:0.95rem;"></i> Delivery &amp; Install</h3>
+                <p class="step-desc">We deliver to your home, assemble everything carefully, and make sure you are 100% happy.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED WORK GALLERY (EXPANDED TO 6 HIGHLIGHTS) -->
+    <section class="gallery-section" id="gallery">
+        <div class="gallery-header reveal">
+            <div>
+                <p class="eyebrow">Our Work</p>
+                <h2 class="section-title">Recent Projects &amp; <em>Photos</em></h2>
+                <p class="section-desc">Real photos of furniture, kitchens, and woodwork crafted for homes across India.</p>
+            </div>
+        </div>
+        <div class="gallery-grid reveal">
+            <div class="gallery-item">
+                <div class="gimg"><img src="{{ url_for('static', filename='img/portfolio/woodx-025.jpg') }}" alt="Custom dining table" loading="lazy" decoding="async"></div>
+                <div class="gallery-overlay">
+                    <span class="gallery-category-pill">Solid Teakwood</span>
+                    <span class="gallery-overlay-text">Bespoke Dining Table <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gimg"><img src="{{ url_for('static', filename='img/portfolio/woodx-002.jpg') }}" alt="Oak kitchen cabinets" loading="lazy" decoding="async"></div>
+                <div class="gallery-overlay">
+                    <span class="gallery-category-pill">Modular Kitchen</span>
+                    <span class="gallery-overlay-text">Modern Kitchen Cabinets <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gimg"><img src="{{ url_for('static', filename='img/portfolio/woodx-083.jpg') }}" alt="Royal handcarved master bed" loading="lazy" decoding="async"></div>
+                <div class="gallery-overlay">
+                    <span class="gallery-category-pill">Master Bedroom</span>
+                    <span class="gallery-overlay-text">Solid Teak King Bed <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gimg"><img src="{{ url_for('static', filename='img/portfolio/woodx-006.jpg') }}" alt="Fluted wood wall paneling" loading="lazy" decoding="async"></div>
+                <div class="gallery-overlay">
+                    <span class="gallery-category-pill">Wall Paneling</span>
+                    <span class="gallery-overlay-text">Modern Fluted Paneling <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gimg"><img src="{{ url_for('static', filename='img/portfolio/woodx-005.jpg') }}" alt="Custom wardrobe storage suite" loading="lazy" decoding="async"></div>
+                <div class="gallery-overlay">
+                    <span class="gallery-category-pill">Wardrobes</span>
+                    <span class="gallery-overlay-text">Custom Bedroom Wardrobe <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gimg"><img src="{{ url_for('static', filename='img/portfolio/woodx-078.jpg') }}" alt="Architectural carved wooden doors" loading="lazy" decoding="async"></div>
+                <div class="gallery-overlay">
+                    <span class="gallery-category-pill">Main Entrance</span>
+                    <span class="gallery-overlay-text">Hand-Carved Teak Door <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                </div>
+            </div>
+        </div>
+        <div class="gallery-viewmore reveal">
+            <a href="{{ url_for('gallery') }}" class="btn-outline">View 130+ Photos in Gallery</a>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE US -->
+    <section class="why-us" id="why">
+        <div class="reveal-left">
+            <p class="eyebrow">Why WoodX Interior</p>
+            <h2 class="section-title">Why Homeowners<br><em>Trust Us</em></h2>
+            <p class="section-desc">Here is why families and interior designers choose WoodX for their furniture and home interiors.</p>
+            <div class="features-grid">
+                <div class="feat-card">
+                    <div class="feat-icon-img"><img src="{{ url_for('static', filename='img/portfolio/woodx-121.jpg') }}" alt="Sustainable wood" loading="lazy" decoding="async"></div>
+                    <h4 class="feat-title">100% Seasoned Wood</h4>
+                    <p class="feat-desc">We properly dry all wood to prevent cracks, bending, and gaps in any season.</p>
+                </div>
+                <div class="feat-card">
+                    <div class="feat-icon-img"><img src="{{ url_for('static', filename='img/portfolio/woodx-125.jpg') }}" alt="Direct workshop pricing" loading="lazy" decoding="async"></div>
+                    <h4 class="feat-title">Direct Workshop Price</h4>
+                    <p class="feat-desc">Get honest, factory-direct prices straight from our workshop with no middleman markup.</p>
+                </div>
+                <div class="feat-card">
+                    <div class="feat-icon-img"><img src="{{ url_for('static', filename='img/portfolio/woodx-129.jpg') }}" alt="Quality joinery" loading="lazy" decoding="async"></div>
+                    <h4 class="feat-title">10-Year Warranty</h4>
+                    <p class="feat-desc">Written 10-year warranty covering all wooden joints and structure.</p>
+                </div>
+                <div class="feat-card">
+                    <div class="feat-icon-img"><img src="{{ url_for('static', filename='img/portfolio/woodx-057.jpg') }}" alt="On time delivery" loading="lazy" decoding="async"></div>
+                    <h4 class="feat-title">On-Time Delivery</h4>
+                    <p class="feat-desc">Careful protective packing, safe transit, and on-site fitting across India.</p>
+                </div>
+            </div>
+        </div>
+        <div class="why-visual reveal-right">
+            <div class="why-img"><img src="{{ url_for('static', filename='img/Trust Us1.png') }}" alt="Workshop joinery" loading="lazy" decoding="async"></div>
+            <div class="why-img"><img src="{{ url_for('static', filename='img/Trust Us2.png') }}" alt="Wood polishing detail" loading="lazy" decoding="async"></div>
+            <div class="why-img"><img src="{{ url_for('static', filename='img/Trust Us3.png') }}" alt="Finished luxury furniture" loading="lazy" decoding="async"></div>
+        </div>
+    </section>
+
+    <!-- MATERIALS WE WORK WITH -->
+    <section class="materials">
+        <p class="eyebrow">Wood We Work With</p>
+        <h2 class="section-title">Quality Hardwoods, <em>Always</em></h2>
+        <p class="section-desc">We hand-select top grade natural hardwoods known for strength, smooth grain, and long life.</p>
+        <div class="mat-grid reveal">
+            <div class="mat-card">
+                <div class="mat-img"><img src="{{ url_for('static', filename='img/premium_wood/english_oak.webp') }}" alt="English Oak" loading="lazy" decoding="async"></div>
+                <div class="mat-info">
+                    <div class="mat-title">English White Oak</div>
+                    <span class="mat-spec">Strong Hardwood · Clean Modern Grain</span>
+                </div>
+            </div>
+            <div class="mat-card">
+                <div class="mat-img"><img src="{{ url_for('static', filename='img/premium_wood/walnut.webp') }}" alt="American Walnut" loading="lazy" decoding="async"></div>
+                <div class="mat-info">
+                    <div class="mat-title">American Walnut</div>
+                    <span class="mat-spec">Rich Dark Brown Tone · Smooth Natural Shine</span>
+                </div>
+            </div>
+            <div class="mat-card">
+                <div class="mat-img"><img src="{{ url_for('static', filename='img/premium_wood/maple.webp') }}" alt="Maple" loading="lazy" decoding="async"></div>
+                <div class="mat-info">
+                    <div class="mat-title">Hard Rock Maple</div>
+                    <span class="mat-spec">Smooth Light Wood · Great for Heavy Daily Use</span>
+                </div>
+            </div>
+            <div class="mat-card">
+                <div class="mat-img"><img src="{{ url_for('static', filename='img/premium_wood/cherry.webp') }}" alt="Cherry Wood" loading="lazy" decoding="async"></div>
+                <div class="mat-info">
+                    <div class="mat-title">Black Cherry</div>
+                    <span class="mat-spec">Warm Amber Glow · Looks Richer With Age</span>
+                </div>
+            </div>
+            <div class="mat-card">
+                <div class="mat-img"><img src="{{ url_for('static', filename='img/portfolio/woodx-076.jpg') }}" alt="Genuine CP Teak Wood" loading="lazy" decoding="async"></div>
+                <div class="mat-info">
+                    <div class="mat-title">Genuine CP Teak (Sagwan)</div>
+                    <span class="mat-spec">Best for Furniture · Termite &amp; Water Resistant</span>
+                </div>
+            </div>
+            <div class="mat-card">
+                <div class="mat-img"><img src="{{ url_for('static', filename='img/portfolio/woodx-090.jpg') }}" alt="Saharanpur Sheesham Rosewood" loading="lazy" decoding="async"></div>
+                <div class="mat-info">
+                    <div class="mat-title">Saharanpur Sheesham</div>
+                    <span class="mat-spec">Heavy &amp; Durable · Bold Natural Grain</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS / REVIEWS CAROUSEL -->
+    <section class="testimonials" id="testimonials">
+        <div class="testimonials-header">
+            <div class="reveal">
+                <p class="eyebrow">Customer Reviews</p>
+                <h2 class="section-title">What Our Customers <em>Say</em></h2>
+                <p class="section-desc">Real feedback from homeowners, designers, and business owners.</p>
+            </div>
+            <div class="carousel-nav">
+                <button class="carousel-btn" id="prevBtn" aria-label="Previous Review">‹</button>
+                <button class="carousel-btn" id="nextBtn" aria-label="Next Review">›</button>
+            </div>
+        </div>
+        <div class="carousel-wrap">
+            <div class="carousel-track" id="carouselTrack">
+                <div class="testi-card">
+                    <i class="fa-solid fa-quote-right quote-watermark"></i>
+                    <div class="stars">★★★★★</div>
+                    <p class="quote-text">WoodX Interior built our modular kitchen and the quality is outstanding. The soft-close drawers work smoothly and the carved shutter detailing looks beautiful. Worth every rupee.</p>
+                    <div class="reviewer-name">Rajesh Kumar Gupta</div>
+                    <div class="reviewer-title">Homeowner · Saharanpur</div>
+                    <span class="verified-client"><i class="fa-solid fa-circle-check"></i> Verified Project</span>
+                </div>
+                <div class="testi-card">
+                    <i class="fa-solid fa-quote-right quote-watermark"></i>
+                    <div class="stars">★★★★★</div>
+                    <p class="quote-text">We ordered a solid Sheesham wood dining table with six chairs for a client's farmhouse. The finish and hand-carved details matched our design drawings perfectly. The clients were very happy.</p>
+                    <div class="reviewer-name">Priya Sharma</div>
+                    <div class="reviewer-title">Interior Designer · Dehradun</div>
+                    <span class="verified-client"><i class="fa-solid fa-circle-check"></i> Verified Project</span>
+                </div>
+                <div class="testi-card">
+                    <i class="fa-solid fa-quote-right quote-watermark"></i>
+                    <div class="stars">★★★★★</div>
+                    <p class="quote-text">We got our restaurant's wooden tables and counter made in solid wood. They delivered everything on time before our opening date. It is very sturdy for daily use and looks premium.</p>
+                    <div class="reviewer-name">Anil Malhotra</div>
+                    <div class="reviewer-title">Restaurant Owner · Yamunanagar</div>
+                    <span class="verified-client"><i class="fa-solid fa-circle-check"></i> Verified Project</span>
+                </div>
+                <div class="testi-card">
+                    <i class="fa-solid fa-quote-right quote-watermark"></i>
+                    <div class="stars">★★★★★</div>
+                    <p class="quote-text">Our old wooden staircase was badly damaged. The WoodX team restored it to look brand new and matched the original carved design nicely. Very professional work.</p>
+                    <div class="reviewer-name">Vikram Singh Rana</div>
+                    <div class="reviewer-title">Property Owner · Roorkee</div>
+                    <span class="verified-client"><i class="fa-solid fa-circle-check"></i> Verified Project</span>
+                </div>
+                <div class="testi-card">
+                    <i class="fa-solid fa-quote-right quote-watermark"></i>
+                    <div class="stars">★★★★★</div>
+                    <p class="quote-text">The sliding wardrobes they built for our bedroom used every inch of space well. The wood and hardware quality completely justified the price.</p>
+                    <div class="reviewer-name">Sunita Verma</div>
+                    <div class="reviewer-title">Homeowner · Muzaffarnagar</div>
+                    <span class="verified-client"><i class="fa-solid fa-circle-check"></i> Verified Project</span>
+                </div>
+                <div class="testi-card">
+                    <i class="fa-solid fa-quote-right quote-watermark"></i>
+                    <div class="stars">★★★★★</div>
+                    <p class="quote-text">We ordered a hand-carved solid teak main entrance door for our new home. Neighbours and guests always ask where we got it made. Truly great craftsmanship.</p>
+                    <div class="reviewer-name">Ramesh Tyagi</div>
+                    <div class="reviewer-title">Homeowner · Meerut</div>
+                    <span class="verified-client"><i class="fa-solid fa-circle-check"></i> Verified Project</span>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-dots" id="carouselDots"></div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="faq" id="faq">
+        <div class="reveal">
+            <p class="eyebrow">Common Questions</p>
+            <h2 class="section-title">Frequently Asked<br><em>Questions</em></h2>
+        </div>
+        <div class="faq-container reveal">
+            <div class="faq-questions">
+                <div class="faq-item">
+                    <button class="faq-question">How long does a custom project take?<i class="fa-solid fa-chevron-down faq-arrow"></i></button>
+                    <div class="faq-answer"><div class="faq-answer-inner">Timelines depend on the project size. A single dining table or bed usually takes 2 to 3 weeks. A complete modular kitchen or wardrobe set takes 3 to 4 weeks. We always give you a confirmed delivery date before starting.</div></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Do you offer free design consultations?<i class="fa-solid fa-chevron-down faq-arrow"></i></button>
+                    <div class="faq-answer"><div class="faq-answer-inner">Yes, completely free. You can discuss your ideas, share your room size, and get expert guidance and a detailed quote with no obligation. We can talk on WhatsApp, visit your home, or meet at our Saharanpur workshop.</div></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Can I choose my own wood and polish colour?<i class="fa-solid fa-chevron-down faq-arrow"></i></button>
+                    <div class="faq-answer"><div class="faq-answer-inner">Yes. You can choose from Teak (Sagwan), Sheesham, Oak, Walnut, and HDHMR. We also offer glossy, matt, and natural wood polish in any shade you like.</div></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Where do you deliver and install?<i class="fa-solid fa-chevron-down faq-arrow"></i></button>
+                    <div class="faq-answer"><div class="faq-answer-inner">Our workshop is in Saharanpur, but we deliver and install furniture across Dehradun, Haridwar, Meerut, Delhi NCR, Chandigarh, and all across India with safe protective packing.</div></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">How do you protect wood from termites and moisture?<i class="fa-solid fa-chevron-down faq-arrow"></i></button>
+                    <div class="faq-answer"><div class="faq-answer-inner">All our wood is treated against termites and borer insects. We also dry the wood properly before crafting to prevent cracks and seasonal bending.</div></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">What warranty do you provide?<i class="fa-solid fa-chevron-down faq-arrow"></i></button>
+                    <div class="faq-answer"><div class="faq-answer-inner">We provide a 10-year written warranty on all wooden joints and structure. Kitchen and wardrobe hardware (like Blum, Hettich, Hafele) comes with the manufacturer's warranty.</div></div>
+                </div>
+            </div>
+            <div class="faq-footer">
+                <p class="section-desc">Have a question not listed here? Contact us directly — we are always happy to help.</p>
+                <a href="#contact" class="btn-primary" style="margin-top:1.5rem;display:inline-block">Ask Us Directly</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOTTOM CTA BANNER -->
+    <div class="cta-banner">
+        <div class="cta-bg" id="ctaBg"></div>
+        <div class="cta-overlay"></div>
+        <div class="cta-content reveal">
+            <h2>Ready to Start<br><em>Your Project?</em></h2>
+            <p>Get a free consultation and fixed price quote from our team today.</p>
+            <a href="#contact" class="btn-amber-lg"><i class="fa-solid fa-calendar-check" style="margin-right: 8px;"></i> Get Your Free Quote Today</a>
+        </div>
+    </div>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact" id="contact">
+        <div class="reveal-left">
+            <p class="eyebrow">Get In Touch</p>
+            <h2 class="section-title">Let's Build<br><em>Your Dream Space</em></h2>
+            <p class="section-desc">Have a project in mind? Send us a message and our team will get back to you within 15 minutes.</p>
+            <div class="contact-info">
+                <div class="contact-item"><div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div><div><div class="contact-label">Workshop</div><div class="contact-value">Near Azizia Masjid, Azeez Colony, Chilkana Bus Stand, Saharanpur, UP</div></div></div>
+                <div class="contact-item"><div class="contact-icon"><i class="fa-solid fa-phone"></i></div><div><div class="contact-label">Phone / WhatsApp</div><div class="contact-value"><a href="tel:+919759047747" style="color: inherit; text-decoration: none;">+91 97590 47747</a> / <a href="tel:+918865823799" style="color: inherit; text-decoration: none;">+91 88658 23799</a></div></div></div>
+                <div class="contact-item"><div class="contact-icon"><i class="fa-solid fa-envelope"></i></div><div><div class="contact-label">Email</div><div class="contact-value"><a href="mailto:woodexinteriorindia@gmail.com" style="color: inherit; text-decoration: none;">woodexinteriorindia@gmail.com</a></div></div></div>
+                <div class="contact-item"><div class="contact-icon"><i class="fa-solid fa-clock"></i></div><div><div class="contact-label">Opening Hours</div><div class="contact-value">Mon–Fri 8am–6pm · Sat 9am–3pm</div></div></div>
+            </div>
+            <div class="contact-map" style="height: 300px; overflow: hidden; border-radius: 6px; border: 1px solid var(--border); margin-top: 1.5rem;">
+                <iframe src="https://www.google.com/maps?q=29.990142,77.5378099&z=17&hl=en&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+        <div class="reveal-right">
+            <div class="contact-form">
+                <h3 class="form-title">Send Us a Message</h3>
+                <div class="form-row">
+                    <div class="form-group full"><label for="name">Your Name *</label><input type="text" id="name" placeholder="Full Name"></div>
+                    <div class="form-group full"><label for="phone">Phone / WhatsApp Number *</label><input type="tel" id="phone" placeholder="+91 98765 43210"></div>
+                    <div class="form-group full"><label for="address">City / Address *</label><input type="text" id="address" placeholder="e.g. Saharanpur, Dehradun, Delhi NCR..."></div>
+                    <div class="form-group full"><label for="message">Tell Us About Your Project</label><textarea id="message" placeholder="Describe what furniture you need, room dimensions, wood type (Teak, Sheesham, Oak), etc."></textarea></div>
+                </div>
+                <button class="btn-submit" onclick="submitForm()"><i class="fa-brands fa-whatsapp"></i> Send via WhatsApp</button>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

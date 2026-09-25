@@ -1,0 +1,497 @@
+{% extends 'base.html' %}
+
+{% block title %}Portfolio Gallery | Custom Woodwork & Furniture Projects Saharanpur{% endblock %}
+{% block meta_description %}Browse 130+ real photos of hand-carved beds, sofas, chairs, and dining tables crafted by WoodX Interior in our Saharanpur workshop. See the craftsmanship before you order.{% endblock %}
+{% block meta_keywords %}WoodX Interior gallery, hand carved furniture photos, Saharanpur furniture portfolio, custom wood furniture examples{% endblock %}
+{% block og_title %}Portfolio Gallery | WoodX Interior Saharanpur{% endblock %}
+{% block og_description %}130+ real photos of hand-carved beds, sofas, chairs, and tables from our Saharanpur workshop.{% endblock %}
+
+{% block extra_css %}
+    <link rel="preload" as="image" href="{{ url_for('static', filename='img/portfolio/woodx-080.jpg') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <style>
+        .page-banner {
+            height: 40vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            overflow: hidden;
+            margin-top: 85px;
+        }
+        @media(min-width: 1200px) {
+            .page-banner {
+                height: 55vh;
+                min-height: 460px;
+                max-height: 620px;
+            }
+        }
+        .page-banner img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+        .page-banner-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(18, 8, 2, 0.6);
+            z-index: 2;
+        }
+        .page-banner-content {
+            position: relative;
+            z-index: 3;
+            padding: 0 5vw;
+        }
+        .page-banner h1 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            margin-bottom: 1rem;
+        }
+        .page-banner em { font-style: italic; color: var(--amber); }
+
+        .gallery-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: 60px 5vw 0;
+            flex-wrap: wrap;
+        }
+        .gallery-tab-btn {
+            background: transparent;
+            border: 2px solid var(--border);
+            color: var(--text-mid);
+            font-family: 'Barlow', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            padding: 0.7rem 2rem;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: all .2s;
+        }
+        .gallery-tab-btn:hover {
+            border-color: var(--amber);
+            color: var(--amber);
+        }
+        .gallery-tab-btn.active {
+            background: var(--amber);
+            border-color: var(--amber);
+            color: var(--brown-dark);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            padding: 40px 5vw 80px;
+        }
+
+        @media(max-width: 1100px) {
+            .gallery-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media(max-width: 700px) {
+            .gallery-grid { grid-template-columns: 1fr; }
+        }
+
+        .gallery-item {
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px var(--shadow);
+            aspect-ratio: 3/2;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .gallery-item:hover { transform: translateY(-5px); }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            content-visibility: auto;
+        }
+
+        .video-showcase {
+            background: var(--section-bg);
+            padding: 80px 5vw;
+            text-align: center;
+        }
+        .video-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 800px;
+            margin: 3rem auto 0;
+            justify-content: center;
+        }
+        .video-card {
+            border-radius: 4px;
+            overflow: hidden;
+            background: #000;
+            aspect-ratio: 9/16;
+            box-shadow: 0 20px 50px var(--shadow);
+        }
+        .video-card video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .cta-banner-gallery {
+            position: relative;
+            overflow: hidden;
+            background: var(--brown-dark);
+        }
+        .cta-gallery-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url("{{ url_for('static', filename='img/portfolio/woodx-116.jpg') }}");
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+        }
+        .cta-gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(18, 8, 2, 0.7);
+            z-index: 2;
+        }
+        .cta-gallery-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            color: #fff;
+            padding: 100px 5vw;
+        }
+        .cta-gallery-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+        .cta-gallery-content p {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.8);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+        }
+
+        @media(max-width: 800px) {
+            .video-grid { grid-template-columns: 1fr; max-width: 400px; margin: 3rem auto 0; }
+            .cta-gallery-bg { background-attachment: scroll; }
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(18, 8, 2, 0.94);
+            z-index: 999;
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox.open {
+            display: flex;
+        }
+        .lightbox-img {
+            max-width: 88vw;
+            max-height: 88vh;
+            border-radius: 4px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, .5);
+            object-fit: contain;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 2.6rem;
+            line-height: 1;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        .lightbox-close:hover { color: var(--amber); }
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, .12);
+            border: none;
+            color: #fff;
+            font-size: 2.2rem;
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background .2s, color .2s;
+            z-index: 1001;
+        }
+        .lightbox-nav:hover { background: var(--amber); color: var(--brown-dark); }
+        .lightbox-prev { left: 20px; }
+        .lightbox-next { right: 20px; }
+
+        @media(max-width: 700px) {
+            .lightbox-img { max-width: 92vw; max-height: 78vh; }
+            .lightbox-nav { width: 42px; height: 42px; font-size: 1.7rem; }
+            .lightbox-prev { left: 8px; }
+            .lightbox-next { right: 8px; }
+            .lightbox-close { font-size: 2rem; top: 12px; right: 16px; }
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="page-banner">
+        <img src="{{ url_for('static', filename='img/portfolio/woodx-080.jpg') }}" alt="Gallery Banner">
+        <div class="page-banner-overlay"></div>
+        <div class="page-banner-content reveal">
+            <h1>Our <em>Projects</em></h1>
+            <p class="section-desc" style="color: rgba(255,255,255,0.8); margin: 0 auto;">A collection of custom solid wood furniture and interior projects made in our workshop.</p>
+        </div>
+    </div>
+
+    <div class="gallery-tabs reveal">
+        <button class="gallery-tab-btn active" data-tab="all">All (132)</button>
+        <button class="gallery-tab-btn" data-tab="image">Image (130)</button>
+        <button class="gallery-tab-btn" data-tab="video">Video (2)</button>
+    </div>
+
+    <div class="gallery-grid" id="galleryImages">
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-001.jpg') }}" alt="Project 001" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-002.jpg') }}" alt="Project 002" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-003.jpg') }}" alt="Project 003" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-004.jpg') }}" alt="Project 004" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-005.jpg') }}" alt="Project 005" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-006.jpg') }}" alt="Project 006" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-007.jpg') }}" alt="Project 007" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-008.jpg') }}" alt="Project 008" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-009.jpg') }}" alt="Project 009" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-010.jpg') }}" alt="Project 010" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-012.jpg') }}" alt="Project 012" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-013.jpg') }}" alt="Project 013" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-014.jpg') }}" alt="Project 014" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-015.jpg') }}" alt="Project 015" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-016.jpg') }}" alt="Project 016" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-017.jpg') }}" alt="Project 017" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-018.jpg') }}" alt="Project 018" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-019.jpg') }}" alt="Project 019" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-020.jpg') }}" alt="Project 020" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-021.jpg') }}" alt="Project 021" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-022.jpg') }}" alt="Project 022" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-023.jpg') }}" alt="Project 023" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-024.jpg') }}" alt="Project 024" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-025.jpg') }}" alt="Project 025" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-026.jpg') }}" alt="Project 026" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-027.jpg') }}" alt="Project 027" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-028.jpg') }}" alt="Project 028" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-029.jpg') }}" alt="Project 029" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-030.jpg') }}" alt="Project 030" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-031.jpg') }}" alt="Project 031" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-032.jpg') }}" alt="Project 032" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-033.jpg') }}" alt="Project 033" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-034.jpg') }}" alt="Project 034" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-035.jpg') }}" alt="Project 035" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-036.jpg') }}" alt="Project 036" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-037.jpg') }}" alt="Project 037" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-038.jpg') }}" alt="Project 038" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-039.jpg') }}" alt="Project 039" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-040.jpg') }}" alt="Project 040" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-041.jpg') }}" alt="Project 041" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-042.jpg') }}" alt="Project 042" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-043.jpg') }}" alt="Project 043" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-044.jpg') }}" alt="Project 044" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-045.jpg') }}" alt="Project 045" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-046.jpg') }}" alt="Project 046" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-047.jpg') }}" alt="Project 047" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-048.jpg') }}" alt="Project 048" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-049.jpg') }}" alt="Project 049" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-050.jpg') }}" alt="Project 050" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-051.jpg') }}" alt="Project 051" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-052.jpg') }}" alt="Project 052" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-053.jpg') }}" alt="Project 053" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-054.jpg') }}" alt="Project 054" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-055.jpg') }}" alt="Project 055" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-056.jpg') }}" alt="Project 056" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-057.jpg') }}" alt="Project 057" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-058.jpg') }}" alt="Project 058" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-059.jpg') }}" alt="Project 059" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-060.jpg') }}" alt="Project 060" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-061.jpg') }}" alt="Project 061" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-062.jpg') }}" alt="Project 062" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-063.jpg') }}" alt="Project 063" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-064.jpg') }}" alt="Project 064" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-065.jpg') }}" alt="Project 065" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-066.jpg') }}" alt="Project 066" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-067.jpg') }}" alt="Project 067" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-068.jpg') }}" alt="Project 068" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-069.jpg') }}" alt="Project 069" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-070.jpg') }}" alt="Project 070" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-071.jpg') }}" alt="Project 071" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-072.jpg') }}" alt="Project 072" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-073.jpg') }}" alt="Project 073" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-074.jpg') }}" alt="Project 074" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-075.jpg') }}" alt="Project 075" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-076.jpg') }}" alt="Project 076" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-077.jpg') }}" alt="Project 077" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-078.jpg') }}" alt="Project 078" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-079.jpg') }}" alt="Project 079" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-080.jpg') }}" alt="Project 080" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-081.jpg') }}" alt="Project 081" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-082.jpg') }}" alt="Project 082" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-083.jpg') }}" alt="Project 083" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-084.jpg') }}" alt="Project 084" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-085.jpg') }}" alt="Project 085" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-086.jpg') }}" alt="Project 086" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-087.jpg') }}" alt="Project 087" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-088.jpg') }}" alt="Project 088" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-089.jpg') }}" alt="Project 089" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-090.jpg') }}" alt="Project 090" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-091.jpg') }}" alt="Project 091" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-092.jpg') }}" alt="Project 092" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-093.jpg') }}" alt="Project 093" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-094.jpg') }}" alt="Project 094" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-095.jpg') }}" alt="Project 095" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-096.jpg') }}" alt="Project 096" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-097.jpg') }}" alt="Project 097" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-098.jpg') }}" alt="Project 098" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-099.jpg') }}" alt="Project 099" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-100.jpg') }}" alt="Project 100" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-102.jpg') }}" alt="Project 102" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-103.jpg') }}" alt="Project 103" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-104.jpg') }}" alt="Project 104" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-105.jpg') }}" alt="Project 105" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-106.jpg') }}" alt="Project 106" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-107.jpg') }}" alt="Project 107" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-108.jpg') }}" alt="Project 108" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-109.jpg') }}" alt="Project 109" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-110.jpg') }}" alt="Project 110" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-111.jpg') }}" alt="Project 111" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-112.jpg') }}" alt="Project 112" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-113.jpg') }}" alt="Project 113" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-114.jpg') }}" alt="Project 114" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-115.jpg') }}" alt="Project 115" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-116.jpg') }}" alt="Project 116" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-117.jpg') }}" alt="Project 117" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-118.jpg') }}" alt="Project 118" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-119.jpg') }}" alt="Project 119" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-120.jpg') }}" alt="Project 120" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-121.jpg') }}" alt="Project 121" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-122.jpg') }}" alt="Project 122" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-123.jpg') }}" alt="Project 123" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-124.jpg') }}" alt="Project 124" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-125.jpg') }}" alt="Project 125" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-126.jpg') }}" alt="Project 126" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-127.jpg') }}" alt="Project 127" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-128.jpg') }}" alt="Project 128" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-129.jpg') }}" alt="Project 129" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-130.jpg') }}" alt="Project 130" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-131.jpg') }}" alt="Project 131" loading="lazy" decoding="async"></div>
+        <div class="gallery-item reveal"><img src="{{ url_for('static', filename='img/portfolio/woodx-132.jpg') }}" alt="Project 132" loading="lazy" decoding="async"></div>
+    </div>
+
+    <section class="video-showcase" id="galleryVideos">
+        <div class="reveal">
+            <p class="eyebrow">Craftsmanship in Motion</p>
+            <h2 class="section-title">Video <em>Highlights</em></h2>
+            <p class="section-desc">Watch our workshop in action and see how we bring raw timber to life.</p>
+        </div>
+        
+        <div class="video-grid reveal">
+            <div class="video-card">
+                <video controls playsinline preload="metadata">
+                    <source src="{{ url_for('static', filename='videos/woodx-workshop-1.mp4') }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="video-card">
+                <video controls playsinline preload="metadata">
+                    <source src="{{ url_for('static', filename='videos/woodx-workshop-2.mp4') }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+        <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous image">&lsaquo;</button>
+        <img class="lightbox-img" id="lightboxImg" src="" alt="">
+        <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next image">&rsaquo;</button>
+    </div>
+
+    <!-- GALLERY CTA -->
+    <div class="cta-banner-gallery">
+        <div class="cta-gallery-bg"></div>
+        <div class="cta-gallery-overlay"></div>
+        <div class="cta-gallery-content reveal">
+            <h2>Like What <em>You See?</em></h2>
+            <p>Let's discuss how we can create custom solid wood furniture for your home.</p>
+            <a href="{{ url_for('contact') }}" class="btn-amber-lg">Get Your Free Quote</a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    const galleryTabBtns = document.querySelectorAll('.gallery-tab-btn');
+    const galleryImagesEl = document.getElementById('galleryImages');
+    const galleryVideosEl = document.getElementById('galleryVideos');
+    galleryTabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            galleryTabBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const tab = btn.dataset.tab;
+            galleryImagesEl.style.display = (tab === 'all' || tab === 'image') ? 'grid' : 'none';
+            galleryVideosEl.style.display = (tab === 'all' || tab === 'video') ? 'block' : 'none';
+        });
+    });
+
+    const lightboxItems = Array.from(document.querySelectorAll('#galleryImages .gallery-item img'));
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    let lightboxIndex = 0;
+
+    function showLightboxImage(index) {
+        lightboxIndex = (index + lightboxItems.length) % lightboxItems.length;
+        lightboxImg.src = lightboxItems[lightboxIndex].src;
+        lightboxImg.alt = lightboxItems[lightboxIndex].alt;
+    }
+    function openLightbox(index) {
+        showLightboxImage(index);
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+        lightbox.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    lightboxItems.forEach((img, i) => {
+        img.closest('.gallery-item').addEventListener('click', () => openLightbox(i));
+    });
+    document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+    document.getElementById('lightboxNext').addEventListener('click', () => showLightboxImage(lightboxIndex + 1));
+    document.getElementById('lightboxPrev').addEventListener('click', () => showLightboxImage(lightboxIndex - 1));
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('open')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowRight') showLightboxImage(lightboxIndex + 1);
+        if (e.key === 'ArrowLeft') showLightboxImage(lightboxIndex - 1);
+    });
+</script>
+{% endblock %}
