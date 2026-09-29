@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 
-{% block title %}{{ service.name }} | WoodX Interior Saharanpur{% endblock %}
+{% block title %}{{ service.name }} | Wood Ex Interior Saharanpur{% endblock %}
 {% block meta_description %}{{ service.short_desc }} Handcrafted in our Saharanpur workshop with a 10-year warranty.{% endblock %}
-{% block meta_keywords %}{{ service.short_name }} Saharanpur, {{ service.name }}, WoodX Interior {{ service.short_name }}, {{ service.category }}{% endblock %}
-{% block og_title %}{{ service.name }} | WoodX Interior{% endblock %}
+{% block meta_keywords %}{{ service.short_name }} Saharanpur, {{ service.name }}, Wood Ex Interior {{ service.short_name }}, {{ service.category }}{% endblock %}
+{% block og_title %}{{ service.name }} | Wood Ex Interior{% endblock %}
 {% block og_description %}{{ service.tagline }}{% endblock %}
 {% block og_image %}{{ url_for('static', filename=service.hero_img, _external=True) }}{% endblock %}
 
@@ -20,7 +20,7 @@
       "description": "{{ service.short_desc }}",
       "provider": {
         "@type": "LocalBusiness",
-        "name": "WoodX Interior",
+        "name": "Wood Ex Interior",
         "alternateName": "Wood Ex Interior & Co.",
         "telephone": "+91-9759047747",
         "address": {
@@ -383,7 +383,7 @@
             return;
         }
 
-        let text = `*New Quote Request from WoodX Interior Website*%0A%0A`;
+        let text = `*New Quote Request from Wood Ex Interior Website*%0A%0A`;
         text += `*Service:* ${encodeURIComponent(serviceName)}%0A`;
         text += `*Name:* ${encodeURIComponent(name)}%0A`;
         text += `*Phone:* ${encodeURIComponent(phone)}%0A`;

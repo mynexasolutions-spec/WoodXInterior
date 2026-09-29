@@ -139,7 +139,7 @@ function submitForm() {
     }
 
     const whatsappNumber = "919759047747"; // Updated WhatsApp number
-    let text = `*New Inquiry from WoodX Interior Website*%0A%0A`;
+    let text = `*New Inquiry from Wood Ex Interior Website*%0A%0A`;
     text += `*Name:* ${name}%0A`;
     text += `*Phone:* ${phone}%0A`;
     text += `*Address:* ${address}%0A`;

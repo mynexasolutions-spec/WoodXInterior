@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="{% block meta_description %}WoodX Interior (Wood Ex Interior & Co.) - Premium bespoke woodworking and custom furniture services in Saharanpur. Specializing in hand-carved beds, sofas, chairs, and dining tables.{% endblock %}">
-    <meta name="keywords" content="{% block meta_keywords %}custom furniture Saharanpur, best carpenter Saharanpur, bespoke woodworking India, hand carved beds Saharanpur, wood carving Saharanpur, WoodX Interior Saharanpur, professional carpentry services Saharanpur{% endblock %}">
+    <meta name="description" content="{% block meta_description %}Wood Ex Interior & Co. - Premium bespoke woodworking and custom furniture services in Saharanpur. Specializing in hand-carved beds, sofas, chairs, and dining tables.{% endblock %}">
+    <meta name="keywords" content="{% block meta_keywords %}custom furniture Saharanpur, best carpenter Saharanpur, bespoke woodworking India, hand carved beds Saharanpur, wood carving Saharanpur, Wood Ex Interior Saharanpur, professional carpentry services Saharanpur{% endblock %}">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="{% block og_title %}WoodX Interior | Bespoke Woodworking & Custom Furniture in Saharanpur{% endblock %}">
+    <meta property="og:title" content="{% block og_title %}Wood Ex Interior | Bespoke Woodworking & Custom Furniture in Saharanpur{% endblock %}">
     <meta property="og:description" content="{% block og_description %}Master woodworkers crafting bespoke furniture, luxury cabinetry, and fine joinery in Saharanpur. Handcrafted quality, every piece built by hand.{% endblock %}">
-    <meta property="og:image" content="{% block og_image %}{{ url_for('static', filename='img/woodx-interior-logo.png', _external=True) }}{% endblock %}">
+    <meta property="og:image" content="{% block og_image %}{{ url_for('static', filename='img/wood-ex-interior-logo.png', _external=True) }}{% endblock %}">
     <meta property="og:url" content="{{ request.url_root.rstrip('/') }}{{ request.path }}">
-    <meta property="og:site_name" content="WoodX Interior">
+    <meta property="og:site_name" content="Wood Ex Interior">
     <meta property="og:locale" content="en_IN">
 
     <!-- Twitter Card -->
@@ -30,9 +30,9 @@
     {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
-      "name": "WoodX Interior",
+      "name": "Wood Ex Interior",
       "alternateName": "Wood Ex Interior & Co.",
-      "image": "{{ url_for('static', filename='img/woodx-interior-logo.png', _external=True) }}",
+      "image": "{{ url_for('static', filename='img/wood-ex-interior-logo.png', _external=True) }}",
       "telephone": "+91-9759047747",
       "email": "woodexinteriorindia@gmail.com",
       "taxID": "09CFFPA4936R1ZW",
@@ -51,21 +51,15 @@
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "dayOfWeek": ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
           "opens": "08:00",
           "closes": "18:00"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": "Saturday",
-          "opens": "09:00",
-          "closes": "15:00"
         }
       ]
     }
     </script>
 
-    <title>{% block title %}WoodX Interior | Bespoke Woodworking & Custom Furniture Saharanpur{% endblock %}</title>
+    <title>{% block title %}Wood Ex Interior | Bespoke Woodworking & Custom Furniture Saharanpur{% endblock %}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&family=Barlow+Condensed:wght@700;800;900&family=Playfair+Display:ital,wght@0,900;1,900&display=swap" rel="stylesheet">
@@ -93,8 +87,8 @@
     {% include 'components/footer.html' %}
 
     <div class="floating-actions">
-        <a href="tel:+919759047747" class="float-btn float-phone" aria-label="Call Now" data-tooltip="Call WoodX Interior"><i class="fa-solid fa-phone"></i></a>
-        <a href="https://wa.me/919759047747" class="float-btn float-wa" aria-label="WhatsApp Us" data-tooltip="WhatsApp WoodX Interior"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="tel:+919759047747" class="float-btn float-phone" aria-label="Call Now" data-tooltip="Call Wood Ex Interior"><i class="fa-solid fa-phone"></i></a>
+        <a href="https://wa.me/919759047747" class="float-btn float-wa" aria-label="WhatsApp Us" data-tooltip="WhatsApp Wood Ex Interior"><i class="fa-brands fa-whatsapp"></i></a>
     </div>
 
     <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
